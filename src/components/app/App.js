@@ -30,10 +30,7 @@ class App extends Component {
           </ErrorBoundery>
           <div className="char__content">
             <ErrorBoundery>
-              <CharList
-                onCharSelected={this.onCharSelected}
-                selectedStyle={this.state.selectedStyle}
-              />
+              <CharList onCharSelected={this.onCharSelected} />
             </ErrorBoundery>
             <ErrorBoundery>
               <CharInfo charId={this.state.selectedChar} />
