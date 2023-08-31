@@ -1,47 +1,44 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import AppHeader from "../appHeader/AppHeader";
 import RandomChar from "../randomChar/RandomChar";
 import CharList from "../charList/CharList";
 import CharInfo from "../charInfo/CharInfo";
+import ComicsList from "../comicsList/ComicsList";
 import ErrorBoundery from "../ErrorBoundery/ErrorBoundery";
 import PropTypes from "prop-types";
 
 import decoration from "../../resources/img/vision.png";
 
-class App extends Component {
-  state = {
-    selectedChar: null,
-    selectedStyle: null,
+const App = () => {
+  const [selectedChar, setChar] = useState(null);
+
+  const onCharSelected = (id) => {
+    setChar(id);
   };
 
-  onCharSelected = (id) => {
-    this.setState({
-      selectedChar: id,
-    });
-  };
-
-  render() {
-    return (
-      <div className="app">
-        <AppHeader />
-        <main>
+  return (
+    <div className="app">
+      <AppHeader />
+      <main>
+        {/* <ErrorBoundery>
+          <RandomChar />
+        </ErrorBoundery>
+        <div className="char__content">
           <ErrorBoundery>
-            <RandomChar />
+            <CharList onCharSelected={onCharSelected} />
           </ErrorBoundery>
-          <div className="char__content">
-            <ErrorBoundery>
-              <CharList onCharSelected={this.onCharSelected} />
-            </ErrorBoundery>
-            <ErrorBoundery>
-              <CharInfo charId={this.state.selectedChar} />
-            </ErrorBoundery>
-          </div>
-          <img className="bg-decoration" src={decoration} alt="vision" />
-        </main>
-      </div>
-    );
-  }
-}
+          <ErrorBoundery>
+            <CharInfo charId={selectedChar} />
+          </ErrorBoundery>
+        </div> */}
+        {/* <img className="bg-decoration" src={decoration} alt="vision" /> */}
+        <ErrorBoundery>
+          <ComicsList />
+        </ErrorBoundery>
+      </main>
+    </div>
+  );
+};
 
 CharInfo.propTypes = {
   onCharSelected: PropTypes.func,
