@@ -1,6 +1,5 @@
 import "./comicsList.scss";
-import uw from "../../resources/img/UW.png";
-import xMen from "../../resources/img/x-men.png";
+import { Link } from "react-router-dom";
 import { useState, useCallback, useEffect } from "react";
 import useMarvelService from "../../services/MarvelService";
 import ErrorMessage from "../errorMessage/ErrorMessage";
@@ -39,7 +38,7 @@ const ComicsList = () => {
     const items = arr.map((item, i) => {
       return (
         <li className="comics__item" key={i}>
-          <a href={item.url}>
+          <Link to={`/comics/${item.id}`}>
             <img
               src={item.thumbnail}
               alt={item.title}
@@ -47,7 +46,7 @@ const ComicsList = () => {
             />
             <div className="comics__item-name">{item.title}</div>
             <div className="comics__item-price">{`${item.price}$`}</div>
-          </a>
+          </Link>
         </li>
       );
     });
@@ -70,7 +69,7 @@ const ComicsList = () => {
         disabled={newItemLoading}
         style={{ display: comicsEnded ? "none" : "block" }}
         className="button button__main button__long"
-        onClick={() => onRequest(offset)}
+        onClick={() => onRequest(offset, true)}
       >
         <div className="inner">load more</div>
       </button>
