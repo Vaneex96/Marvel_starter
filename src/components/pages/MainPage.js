@@ -5,7 +5,6 @@ import CharList from "../charList/CharList";
 import ErrorBoundery from "../ErrorBoundery/ErrorBoundery";
 import CharInfo from "../charInfo/CharInfo";
 import Form from "../Form/Form";
-import SingleCharPage from "./SingleCharPage";
 
 import decoration from "../../resources/img/vision.png";
 
